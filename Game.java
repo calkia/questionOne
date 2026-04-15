@@ -15,8 +15,20 @@ public class Game {
     public void play(){}
 
     public int getScore(){
-        int sum;
-        if(levelOne )
+        int sum = 0;
+        if(levelOne.goalReached()){
+            sum+= levelOne.getPoints();
+            if(levelTwo.goalReached()){
+                sum+= levelTwo.getPoints();
+                if(LevelThree.goalReached()){
+                    sum+= LevelThree.getPoints();
+                }
+            }
+        }
+        if(isBonus()){
+            sum *= 3;
+        }
+        return sum;
     }
 
 }
