@@ -27,6 +27,15 @@ public class AppointmentBook {
     }
 
     public boolean makeAppointment(int startPeriod, int endPeriod, int duration){
-
+        boolean reserved = false;
+        for(int i = startPeriod; i<= endPeriod; i++){
+            if(reserved == false){
+                if(findFreeBlock(i,duration) != -1){
+                    reserveBlock(i, findFreeBlock(i, duration), duration);
+                    reserved = true;
+                }
+            }
+        }
+        return reserved;
     }
 }
