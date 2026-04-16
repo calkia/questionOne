@@ -1,12 +1,12 @@
 public class Game {
     private Level levelOne;
     private Level levelTwo;
-    private Level LevelThree;
+    private Level levelThree;
 
     public Game(Level l1, Level l2, Level l3){
         levelOne = l1;
         levelTwo = l2;
-        LevelThree = l3;
+        levelThree = l3;
     }
 
     public boolean isBonus(){
@@ -20,8 +20,8 @@ public class Game {
             sum+= levelOne.getPoints();
             if(levelTwo.goalReached()){
                 sum+= levelTwo.getPoints();
-                if(LevelThree.goalReached()){
-                    sum+= LevelThree.getPoints();
+                if(levelThree.goalReached()){
+                    sum+= levelThree.getPoints();
                 }
             }
         }
@@ -29,6 +29,16 @@ public class Game {
             sum *= 3;
         }
         return sum;
+    }
+    public int playManyTimes(int num){
+        int highScore = 0;
+        for(int i = 0; i<num; i++){
+            play();
+            if(getScore()>highScore){
+                highScore = getScore();
+            }
+        }
+        return highScore;
     }
 
 }
